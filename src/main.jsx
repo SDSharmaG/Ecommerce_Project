@@ -1,13 +1,13 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
-import './index.css'
-import App from './App.jsx'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { HashRouter } from 'react-router-dom'; // Use HashRouter for GitHub Pages
+import './index.css';
+import App from './App.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-     <BrowserRouter basename='/React_Project/'> {/* Replace /myApp with your repo name */}
+    <HashRouter>
       <App />
-    </BrowserRouter>
-  </StrictMode>,
-)
+    </HashRouter>
+  </StrictMode>
+);
