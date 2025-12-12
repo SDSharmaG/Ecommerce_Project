@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom"; // ✅ Only Routes here
 import Home from "./components/Home";
 import Productpage from "./components/Productpage";
 import Cart from "./components/Cart";
@@ -39,7 +39,7 @@ const App = () => {
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <Router>
+    <>
       <Header cartCount={cartCount} />
       <Routes>
         <Route path="/" element={<Home addToCart={addToCart} />} />
@@ -49,7 +49,7 @@ const App = () => {
         />
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
       </Routes>
-    </Router>
+    </>
   );
 };
 
