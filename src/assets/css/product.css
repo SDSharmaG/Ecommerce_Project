@@ -16,3 +16,109 @@
     opacity: 1;
     margin-right: 2px;
 }
+/* .product-card {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+} */
+ .product-card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;           
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+.product-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.product-img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+}
+
+.star,
+.star-filled {
+  width: 16px;
+  height: 16px;
+}
+
+.star {
+  opacity: 0.3;
+}
+
+.star-filled {
+  opacity: 1;
+}
+
+.price-section {
+  margin-top: 6px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.new-price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+}
+
+.discount {
+  color: #d32f2f;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.delivery {
+  font-size: 14px;
+  color: #007600;
+}
+
+.stock-warning {
+  font-size: 14px;
+  color: #b12704;
+  font-weight: 600;
+}
+
+/* .buy-btn {
+  background-color: #63b9d6;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+} */
+ .buy-btn {
+  background-color: #63b9d6;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  margin-top: auto;        /* 🔥 MAGIC LINE */
+}
+
+
+.buy-btn:hover {
+  background-color: #4aa3c1;
+}

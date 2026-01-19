@@ -35,7 +35,7 @@ const App = () => {
       setCart([...cart, { ...product, quantity: 1 }]);
     }
   };
-  // 🟢 CART COUNT = total items (sum of quantities)
+  // CART COUNT = total items (sum of quantities)
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (

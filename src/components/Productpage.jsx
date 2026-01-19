@@ -16,6 +16,7 @@ const Productpage = ({ addToCart }) => {
     fetchProduct();
   }, [id]);
 
+  // ⭐ Rating stars
   const renderStars = (rate) => {
     const stars = [];
     const rounded = Math.round(rate);
@@ -32,56 +33,107 @@ const Productpage = ({ addToCart }) => {
     return stars;
   };
 
-  if (!product) return <p>Loading...</p>;
+  if (!product) return <p className="text-center mt-5">Loading...</p>;
+
+  /* 💰 Pricing Logic */
+  const discountPercent = Math.floor(Math.random() * 30) + 10;
+  const originalPrice = (
+    product.price / (1 - discountPercent / 100)
+  ).toFixed(2);
+
+  /* 🚚 Delivery */
+  const deliveryDays = Math.floor(Math.random() * 3) + 2;
+  const deliveryDate = new Date();
+  deliveryDate.setDate(deliveryDate.getDate() + deliveryDays);
+  const deliveryText = deliveryDate.toLocaleDateString("en-IN", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+  });
+
+  /* 📦 Stock */
+  const stockLeft = Math.floor(Math.random() * 15) + 1;
 
   return (
-    <div>
-      <div
-        className="container d-flex col-12 align-item-center justify-content-center"
-        style={{ marginTop: "130px" }}
-      >
-        <div className="col-6">
+    <div className="container" style={{ marginTop: "120px" }}>
+      <div className="row align-items-center">
+        {/* IMAGE */}
+        <div className="col-md-6 text-center">
           <img
             src={product.image}
-            alt=""
-            style={{
-              width: "100%",
-              height: "400px",
-              objectFit: "contain",
-              padding: "20px",
-              marginRight: "20px",
-            }}
+            alt={product.title}
+            className="img-fluid"
+            style={{ height: "420px", objectFit: "contain" }}
           />
         </div>
-        <div className="col-6 w-50">
-          <h1 className="my-2">{product.title}</h1>
-          <p className="my-5 text-justify">{product.description}</p>
-          <h4 className="mb-4">
-            <strong>${product.price}</strong>
-          </h4>
-          <h6 className="my-3">
-            <strong>Category: </strong>
-            {product.category}
-          </h6>
+
+        {/* DETAILS */}
+        <div className="col-md-6">
+          {discountPercent >= 25 && (
+            <span className="badge bg-danger mb-2">
+              Limited Time Deal
+            </span>
+          )}
+
+          <h2 className="mt-2">{product.title}</h2>
+
+          {/* Rating */}
           <div className="d-flex align-items-center mt-2">
-            {renderStars(product?.rating?.rate)}
-            <span className="ms-2">{product?.rating?.rate}</span>
-            <span className="ms-2">[{product?.rating?.count}]</span>
+            {renderStars(product.rating.rate)}
+            <span className="ms-2">
+              {product.rating.rate.toFixed(1)}
+            </span>
+            <span className="ms-2">
+              ({product.rating.count})
+            </span>
           </div>
-          <br />
+
+          {/* Price */}
+          <div className="mt-3">
+            <span className="old-price">
+              M.R.P: $ {originalPrice}
+            </span>
+            <span className="new-price ms-3">
+              $ {product.price}
+            </span>
+            <span className="discount ms-2">
+              ({discountPercent}% OFF)
+            </span>
+          </div>
+
+          {/* Delivery */}
+          <p className="delivery mt-2">
+            FREE Delivery by <strong>{deliveryText}</strong>
+          </p>
+
+          {/* Stock */}
+          {stockLeft <= 5 && (
+            <p className="stock-warning">
+              Only {stockLeft} left in stock
+            </p>
+          )}
+
+          {/* Description */}
+          <p className="mt-4">{product.description}</p>
+
+          {/* Category */}
+          <p>
+            <strong>Category:</strong> {product.category}
+          </p>
+
+          {/* Buttons */}
           <button
-            className="btn w-100 mt-3"
-            style={{ backgroundColor: "#63B9D6" }}
+            className="btn buy-btn w-100 mt-3"
             onClick={() => addToCart(product)}
           >
             Add to Cart
           </button>
-          <br />
+
           <button
             onClick={() => navigate("/")}
-            className="btn btn-secondary w-100 mt-3"
+            className="btn btn-secondary w-100 mt-2"
           >
-            Back
+            Back to Products
           </button>
         </div>
       </div>

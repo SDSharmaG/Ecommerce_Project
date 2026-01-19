@@ -51,7 +51,7 @@ const Header = ({ searchTerm, setSearchTerm, cartCount }) => {
       style={{
         top: 0,
         width: "100%",
-        backgroundColor: "#D4D7D9",
+        backgroundColor: "white",
         zIndex: 1000,
       }}
     >

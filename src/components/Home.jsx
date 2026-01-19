@@ -7,7 +7,7 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState(""); // State for search term
 
   return (
-    <div style={{ backgroundColor: "#D4D7D9" }}>
+    <div style={{ backgroundColor: "white" }}>
       <Header
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm} // Pass down setter function
