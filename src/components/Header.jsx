@@ -73,7 +73,7 @@ const Header = ({ searchTerm, setSearchTerm, cartCount }) => {
           </div>
 
           {/* Suggestions */}
-          {suggestions.length > 0 && (
+          {suggestions.length > 0 && (  
             <ul
               className="list-group position-absolute w-100 shadow"
               style={{ top: "40px", zIndex: 9999, maxHeight: "200px", overflowY: "auto" }}
