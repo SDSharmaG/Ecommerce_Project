@@ -59,25 +59,27 @@ const Productlists = ({
   });
 
   return (
-    <div className="container w-75 " style={{ marginTop: "120px" }}>
-      <div className="d-flex">
-        <h5 className="flex-grow-1 mx-4 p-2 py-2 align-item-center text-secondary rounded">
+    <div className="container-fluid px-3 px-md-4 pt-3">
+      <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-4">
+        <h5 className="p-2 py-2 text-secondary rounded mb-2 mb-md-0">
           {categoryDisplay[category]}
         </h5>
-        <label htmlFor="filter" className="me-3 mt-2">
-          <strong>Sort By </strong>:
-        </label>
-        <select
-          className="form-select w-auto mb-2"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          <option value="all">All</option>
-          <option value="men's clothing">Men</option>
-          <option value="women's clothing">Women</option>
-          <option value="electronics">Electronics</option>
-          <option value="jewelery">Jewelery</option>
-        </select>
+        <div className="d-flex align-items-center">
+          <label htmlFor="filter" className="me-3 text-nowrap">
+            <strong>Sort By </strong>:
+          </label>
+          <select
+            className="form-select w-auto"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="all">All</option>
+            <option value="men's clothing">Men</option>
+            <option value="women's clothing">Women</option>
+            <option value="electronics">Electronics</option>
+            <option value="jewelery">Jewelery</option>
+          </select>
+        </div>
       </div>
 
       <div className="row">

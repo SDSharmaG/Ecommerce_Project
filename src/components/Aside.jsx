@@ -1,8 +1,20 @@
 import React, { useState } from "react";
 
 const Aside = ({ selectedCategory, setSelectedCategory, setPriceRange }) => {
-  const [showCategories, setShowCategories] = useState(true);
-  const [showPrices, setShowPrices] = useState(true);
+  const isDesktop = window.innerWidth > 768;
+  const [showCategories, setShowCategories] = useState(isDesktop);
+  const [showPrices, setShowPrices] = useState(isDesktop);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setShowCategories(true);
+        setShowPrices(true);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handlePrice = (e) => {
     setPriceRange(e.target.value);
@@ -22,17 +34,7 @@ const Aside = ({ selectedCategory, setSelectedCategory, setPriceRange }) => {
   };
 
   return (
-    <div
-      className="p-3"
-      style={{
-        position: "sticky",
-        top: "100px",
-        height: "100vh",
-        overflowY: "auto",
-        borderRight: "1px solid #ddd",
-        backgroundColor: "#fff",
-      }}
-    >
+    <div className="p-3 aside-container">
       {/* Categories Section */}
       <div className="mb-4">
         <div

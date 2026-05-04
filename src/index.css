@@ -1,1 +1,22 @@
-/* style={{backgroundColor:"#63B9D6"}} */
+/* Global styles */
+
+@media (min-width: 768px) {
+  .aside-container {
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+    border-right: 1px solid #ddd;
+  }
+}
+
+.aside-container {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+@media (max-width: 767.98px) {
+  .aside-container {
+    border-right: none;
+  }
+}
